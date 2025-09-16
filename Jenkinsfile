@@ -13,15 +13,35 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Frontend Dependencies') {
             steps {
-                sh 'npm install'
+                dir('frontend') {
+                    bat 'npm install --no-audit --no-fund'
+                }
             }
         }
 
-        stage('Run Tests') {
+        stage('Install Backend Dependencies') {
             steps {
-                sh 'npm test'
+                dir('backend') {
+                    bat 'npm install --no-audit --no-fund'
+                }
+            }
+        }
+
+        stage('Run Frontend Tests') {
+            steps {
+                dir('frontend') {
+                    bat 'npm test'
+                }
+            }
+        }
+
+        stage('Run Backend Tests') {
+            steps {
+                dir('backend') {
+                    bat 'npm test'
+                }
             }
         }
     }
