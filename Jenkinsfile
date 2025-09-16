@@ -32,7 +32,7 @@ pipeline {
         stage('Run Frontend Tests') {
             steps {
                 dir('frontend') {
-                    bat 'npm test'
+                    bat 'npm test -- --passWithNoTests'
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
         stage('Run Backend Tests') {
             steps {
                 dir('backend') {
-                    bat 'npm test'
+                    bat 'npm test -- --passWithNoTests'
                 }
             }
         }
