@@ -15,17 +15,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                dir('fullstack') {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                dir('fullstack') {
-                    sh 'npm test'
-                }
+                sh 'npm test'
             }
         }
     }
